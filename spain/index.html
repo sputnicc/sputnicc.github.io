@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spain, day by day · Nov 21 – Dec 1, 2026</title>
+<meta name="description" content="Family trip to Spain: a map and plan for each day in Madrid, Barcelona, Tarragona and Toledo.">
+<meta name="theme-color" content="#f5efe3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#planner">Skip to the day planner</a>
+
+<!-- Sticky glass bar: brand + day switcher -->
+<header class="bar" id="bar">
+  <div class="bar-inner">
+    <a class="brand" href="#top" aria-label="Back to top">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-t">Spain <em>2026</em></span>
+    </a>
+    <nav class="switcher" aria-label="Choose a day">
+      <button class="sw-arrow" type="button" id="prev" aria-label="Previous day">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="chips-scroll" id="chips-scroll">
+        <div class="chips" id="chips" role="tablist">
+          <span class="chip-ind" id="chip-ind" aria-hidden="true"></span>
+        </div>
+      </div>
+      <button class="sw-arrow" type="button" id="next" aria-label="Next day">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow reveal" style="--i:0">Family trip · Sat Nov 21 – Tue Dec 1, 2026</div>
+      <h1 class="reveal" style="--i:1">Spain, <em>day by day.</em></h1>
+      <p class="lede reveal" style="--i:2">Madrid, Barcelona, Tarragona and Toledo. One map and one plan for each day, with the hotel for the night, what’s booked, and what’s still open.</p>
+      <div class="hero-cta reveal" style="--i:3">
+        <button class="btn primary" type="button" data-go="overview">See the whole trip</button>
+        <button class="btn ghost" type="button" data-go="nov-22">Start with Nov 22 <span aria-hidden="true">→</span></button>
+      </div>
+    </div>
+    <dl class="stats reveal" style="--i:4" id="stats"></dl>
+  </div>
+  <div class="route-strip reveal" style="--i:5" aria-label="Route">
+    <ol id="route-strip"></ol>
+  </div>
+</section>
+
+<!-- Planner -->
+<main class="planner" id="planner">
+  <div class="grid">
+    <section class="map-card" aria-label="Map">
+      <div id="map" role="region" aria-label="Interactive map of the selected day"></div>
+      <div class="map-top">
+        <span class="glass cap" id="map-caption">—</span>
+        <button type="button" class="glass fit" id="fit-btn" title="Show every place for this day">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+          Fit day
+        </button>
+      </div>
+      <div class="legend glass" aria-label="Map legend">
+        <span><i class="lg hotel"></i>Hotel</span>
+        <span><i class="lg booked"></i>Booked</span>
+        <span><i class="lg planned"></i>Planned / to book</span>
+        <span><i class="lg optional"></i>Optional</span>
+        <span><i class="lg transit"></i>Transit</span>
+        <span><i class="lg area"></i>Area</span>
+      </div>
+      <div class="map-fallback" id="fallback">
+        <h3>Map couldn’t load</h3>
+        <p>The interactive map needs an internet connection. The day’s places are listed below with links to open each one in Google Maps.</p>
+        <ul id="fallback-list"></ul>
+      </div>
+    </section>
+    <section class="panel" id="panel" aria-live="polite"></section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <p>Map tiles © Esri. Place coordinates checked against OpenStreetMap (Nominatim). Restaurants and shops are intentionally left off for now; neighborhoods mark where meals will happen.</p>
+    <p class="muted">Use ← / → to move between days. Click a row to find it on the map.</p>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
