@@ -35,7 +35,7 @@ export function SiteHeader() {
           ))}
         </nav>
       </div>
-      <div className="max-w-full overflow-x-auto">
+      <div className="day-chips max-w-full overflow-x-auto">
         <ul className="mx-auto flex w-max gap-1 px-4 pb-3" aria-label="Jump to a day">
           {DAYS.map((day) => {
             const href = `#${day.id}`;
