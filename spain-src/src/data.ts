@@ -1,5 +1,49 @@
+/* Trip data carried over verbatim from the previous site. Do not invent facts. */
+export type Status = "Booked" | "To book" | "Open" | "Optional";
+export type Kind = "hotel" | "transit" | "place" | "area";
+
+export type Place = {
+  name: string;
+  addr: string;
+  lat: number;
+  lng: number;
+  kind: Kind;
+  glyph?: "plane" | "train";
+  r?: number;
+};
+
+export type Item = {
+  time: string;
+  title: string;
+  note: string;
+  place: string | null;
+  status: Status | null;
+  also?: string[];
+  ref?: string;
+  prevHotel?: boolean;
+};
+
+export type MapView = { label: string; places: string[] | "all" };
+
+export type Day = {
+  id: string;
+  dow: string;
+  date: string;
+  city: string;
+  thin?: boolean;
+  title: string;
+  summary: string;
+  hotel: string | null;
+  checkout?: string;
+  items: Item[];
+  notes: string[];
+  views?: MapView[];
+};
+
+export type Stay = { pid: string; d: string; city: string; nights: string };
+
 /* Trip data — ported verbatim from v1 index.html. Coordinates from OSM/Nominatim. kind: hotel | transit | place | area */
-const PLACES = {
+export const PLACES: Record<string, Place> = {
   /* Hotels */
   hyatt:      {name:"Hyatt Centric Gran Vía", addr:"Gran Vía 31, Madrid", lat:40.41999, lng:-3.70373, kind:"hotel"},
   yurbban:    {name:"Yurbban Passage Hotel & Spa", addr:"Carrer de Trafalgar 26, Barcelona", lat:41.38881, lng:2.17593, kind:"hotel"},
@@ -50,7 +94,7 @@ const PLACES = {
 };
 
 /* status: "Booked" | "To book" | "Open" | "Optional" | null (no badge: arrivals, hotel moments, notes) */
-const DAYS = [
+export const DAYS: Day[] = [
   { id:"nov-21", dow:"Sat", date:"Nov 21", city:"Travel", thin:true,
     title:"Travel day",
     summary:"Nicolas flies overnight to Madrid. Nothing to map yet; the trip starts on the ground Sunday morning.",
@@ -213,7 +257,7 @@ const DAYS = [
     ],
     notes:[] }
 ];
-const STAYS = [
+export const STAYS: Stay[] = [
   {pid:"hyatt", d:"Nov 22–25", city:"Madrid", nights:"4 nights"},
   {pid:"yurbban", d:"Nov 26–28", city:"Barcelona", nights:"3 nights"},
   {pid:"preciados", d:"Nov 29–30", city:"Madrid", nights:"2 nights"}
