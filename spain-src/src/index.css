@@ -1,0 +1,169 @@
+/* Hallmark · custom · idea: "one rail through the days, the map stuck beside the plan" · vibe: "cool stone, ink, AVE red" · paper: light · display: Besley · accent: warm */
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Atkinson Hyperlegible", "Segoe UI", sans-serif;
+  --font-display: "Besley", "Iowan Old Style", Georgia, serif;
+  --color-paper: #f3f5f7;
+  --color-ink: #1b2330;
+  --color-muted: #3e4a5c;
+  --color-line: #d5dbe3;
+  --color-card: #fbfcfd;
+  --color-ave: #8f1d24;
+  --color-booked: #145c3a;
+  --color-booked-bg: #e5f2eb;
+  --color-tobook: #6a3d08;
+  --color-tobook-bg: #f8ecd9;
+  --color-open: #1e3a6e;
+  --color-open-bg: #e7eef8;
+  --color-optional: #3d4553;
+  --color-optional-bg: #eceff3;
+  --color-grid: #c5ccd6;
+  --color-grid-hot: #8f1d24;
+  --animate-marquee: marquee var(--duration, 40s) linear infinite;
+  --animate-marquee-vertical: marquee-vertical var(--duration, 40s) linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - var(--gap, 1rem))); }
+}
+
+@keyframes marquee-vertical {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-100% - var(--gap, 1rem))); }
+}
+
+html,
+body {
+  overflow-x: clip;
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.day-chips {
+  scrollbar-width: none;
+}
+
+.day-chips::-webkit-scrollbar {
+  display: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ave);
+  outline-offset: 3px;
+}
+
+[id] {
+  scroll-margin-top: 12rem;
+}
+
+.skip {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  z-index: 50;
+  transform: translateY(-150%);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 0.5rem 0.8rem;
+}
+
+.skip:focus {
+  transform: none;
+}
+
+.map-frame {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  background: var(--color-line);
+  min-height: 16rem;
+  scroll-margin-top: 12rem;
+}
+
+.map-frame .leaflet-container {
+  height: 100%;
+  width: 100%;
+  background: var(--color-line);
+  font-family: var(--font-sans);
+}
+
+.map-pin {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow: 0 0 0 2px var(--color-paper);
+}
+
+.map-pin-hotel {
+  background: var(--color-ave);
+}
+
+.map-pin-transit {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  box-shadow: 0 0 0 2px var(--color-ink);
+}
+
+.leaflet-control-zoom a {
+  width: 44px !important;
+  height: 44px !important;
+  line-height: 44px !important;
+  font-size: 1.25rem !important;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: var(--color-card);
+  color: var(--color-ink);
+  border-radius: 2px;
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--color-ink) 18%, transparent);
+}
+
+.leaflet-popup-content {
+  margin: 0.7rem 0.85rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.leaflet-popup-content a {
+  color: var(--color-ave);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
